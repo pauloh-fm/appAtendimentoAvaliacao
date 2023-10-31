@@ -1,28 +1,33 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, Image, useWindowDimensions } from 'react-native';
+import StarRating from './startRating';
+import FerramentalLogo from './Ferramental_logo.png';
 
 const App = () => {
-  const [rating, setRating] = useState(null);
+  const [rating, setRating] = useState(0);
+  const dimensions = useWindowDimensions();
 
-  const handleRating = (value) => {
-    setRating(value);
+  useEffect(() => {
+    const isLandscape = dimensions.width > dimensions.height;
+
+    // Verifique a orientação e atualize o estilo conforme necessário
+    // Exemplo: definir o estilo do container com flexDirection: 'row' no modo paisagem
+  }, [dimensions]);
+
+  const handleStarPress = (star) => {
+    setRating(star);
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Avalie o Atendimento</Text>
-      <View style={styles.ratingContainer}>
-        {[1, 2, 3, 4, 5].map((value) => (
-          <TouchableOpacity
-            key={value}
-            style={[styles.ratingButton, rating === value && styles.selectedRating]}
-            onPress={() => handleRating(value)}
-          >
-            <Text>{value}</Text>
-          </TouchableOpacity>
-        ))}
+      <View style={styles.logoContainer}>
+        <Image source={FerramentalLogo} style={styles.logo} />
       </View>
-      <Text style={styles.selectedRatingText}>Sua avaliação: {rating || 'Nenhuma'}</Text>
+      <View style={styles.textContainer}>
+        <Text style={styles.heading}>Obrigado pela preferência</Text>
+        <Text style={styles.ratingText}>Por favor, avalie nosso atendimento:</Text>
+      </View>
+      <StarRating rating={rating} onStarPress={handleStarPress} />
     </View>
   );
 };
@@ -32,30 +37,29 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'gray',
+  },
+  logoContainer: {
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  textContainer: {
+    marginLeft: 20,
+    marginRight: 20,
   },
   heading: {
-    fontSize: 20,
+    fontSize: 24,
+    color: 'white',
+    marginBottom: 10,
+  },
+  ratingText: {
+    fontSize: 18,
+    color: 'white',
     marginBottom: 20,
   },
-  ratingContainer: {
-    flexDirection: 'row',
-  },
-  ratingButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: 'gray',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 5,
-  },
-  selectedRating: {
-    borderColor: 'blue',
-  },
-  selectedRatingText: {
-    marginTop: 20,
-    fontSize: 16,
+  logo: {
+    width: 206,
+    height: 206,
   },
 });
 
