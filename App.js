@@ -11,7 +11,6 @@ const App = () => {
     const isLandscape = dimensions.width > dimensions.height;
 
     // Verifique a orientação e atualize o estilo conforme necessário
-    // Exemplo: definir o estilo do container com flexDirection: 'row' no modo paisagem
   }, [dimensions]);
 
   const handleStarPress = (star) => {
@@ -37,7 +36,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'gray',
+    backgroundColor: 'white',
   },
   logoContainer: {
     alignItems: 'center',
@@ -49,12 +48,12 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 24,
-    color: 'white',
+    color: 'black',
     marginBottom: 10,
   },
   ratingText: {
     fontSize: 18,
-    color: 'white',
+    color: 'black',
     marginBottom: 20,
   },
   logo: {
