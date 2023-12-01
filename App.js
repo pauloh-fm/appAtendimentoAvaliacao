@@ -10,7 +10,7 @@ const App = () => {
   useEffect(() => {
     const isLandscape = dimensions.width > dimensions.height;
 
-    // Verifique a orientação e atualize o estilo conforme necessário
+    // Verifica se está em landscape
   }, [dimensions]);
 
   const handleRatingPress = (ratingValue) => {
