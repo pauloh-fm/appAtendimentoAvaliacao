@@ -3,7 +3,7 @@
     "name": "mobileAvalicaodeAtendimento",
     "slug": "mobileAvalicaodeAtendimento",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "landscape",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.phfarmar256.mobileAvalicaodeAtendimento"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "cc665daf-90ba-4a61-9f26-d09ae608bb2a"
+      }
     }
   }
 }
